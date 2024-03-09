@@ -13,67 +13,67 @@ namespace csharp
 
         public void UpdateQuality()
         {
-            for (var i = 0; i < Items.Count; i++)
+            foreach (var item in Items)
             {
-                switch (Items[i].Name)
+                switch (item.Name)
                 {
                     case "Aged Brie":
                     {
-                        if (Items[i].Quality < 50)
+                        if (item.Quality < 50)
                         {
-                            Items[i].Quality += 1;
+                            item.Quality += 1;
                         }
 
-                        Items[i].SellIn -= 1;
+                        item.SellIn -= 1;
 
-                        if (Items[i].SellIn < 0 && Items[i].Quality < 50)
+                        if (item.SellIn < 0 && item.Quality < 50)
                         {
-                            Items[i].Quality += 1;
+                            item.Quality += 1;
                         }
 
                         break;
                     }
                     case "Backstage passes to a TAFKAL80ETC concert":
                     {
-                        if (Items[i].Quality < 50)
+                        if (item.Quality < 50)
                         {
-                            Items[i].Quality += 1;
+                            item.Quality += 1;
 
-                            if (Items[i].SellIn < 11 && Items[i].Quality < 50)
+                            if (item.SellIn < 11 && item.Quality < 50)
                             {
-                                Items[i].Quality += 1;
+                                item.Quality += 1;
                             }
 
-                            if (Items[i].SellIn < 6 && Items[i].Quality < 50)
+                            if (item.SellIn < 6 && item.Quality < 50)
                             {
-                                Items[i].Quality += 1;
+                                item.Quality += 1;
                             }
                         }
 
-                        Items[i].SellIn -= 1;
+                        item.SellIn -= 1;
 
-                        if (Items[i].SellIn < 0)
+                        if (item.SellIn < 0)
                         {
-                            Items[i].Quality -= Items[i].Quality;
+                            item.Quality -= item.Quality;
                         }
 
                         break;
                     }
                     default:
                     {
-                        if (Items[i].Quality > 0 && Items[i].Name != "Sulfuras, Hand of Ragnaros")
+                        if (item.Name != "Sulfuras, Hand of Ragnaros")
                         {
-                            Items[i].Quality -= 1;
-                        }
+                            if (item.Quality > 0)
+                            {
+                                item.Quality -= 1;
+                            }
 
-                        if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
-                        {
-                            Items[i].SellIn -= 1;
-                        }
+                            item.SellIn -= 1;
 
-                        if (Items[i].SellIn < 0 && Items[i].Quality > 0 && Items[i].Name != "Sulfuras, Hand of Ragnaros")
-                        {
-                            Items[i].Quality -= 1;
+                            if (item.SellIn < 0 && item.Quality > 0)
+                            {
+                                item.Quality -= 1;
+                            }
                         }
 
                         break;
