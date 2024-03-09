@@ -61,12 +61,9 @@ namespace csharp
                     }
                     default:
                     {
-                        if (Items[i].Quality > 0)
+                        if (Items[i].Quality > 0 && Items[i].Name != "Sulfuras, Hand of Ragnaros")
                         {
-                            if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
-                            {
-                                Items[i].Quality -= 1;
-                            }
+                            Items[i].Quality -= 1;
                         }
 
                         if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
@@ -74,15 +71,9 @@ namespace csharp
                             Items[i].SellIn -= 1;
                         }
 
-                        if (Items[i].SellIn < 0)
+                        if (Items[i].SellIn < 0 && Items[i].Quality > 0 && Items[i].Name != "Sulfuras, Hand of Ragnaros")
                         {
-                            if (Items[i].Quality > 0)
-                            {
-                                if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
-                                {
-                                    Items[i].Quality -= 1;
-                                }
-                            }
+                            Items[i].Quality -= 1;
                         }
 
                         break;
