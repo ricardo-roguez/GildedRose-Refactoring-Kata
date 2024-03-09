@@ -91,55 +91,20 @@ namespace csharp
                     }
                     else
                     {
-                        if (Items[i].Name == "Sulfuras, Hand of Ragnaros")
+                        if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
                         {
                             if (Items[i].Quality > 0)
                             {
-                                if (false)
-                                {
-                                    Items[i].Quality -= 1;
-                                }
+                                Items[i].Quality -= 1;
                             }
 
-                            if (false)
-                            {
-                                Items[i].SellIn -= 1;
-                            }
+                            Items[i].SellIn -= 1;
 
                             if (Items[i].SellIn < 0)
                             {
                                 if (Items[i].Quality > 0)
                                 {
-                                    if (false)
-                                    {
-                                        Items[i].Quality -= 1;
-                                    }
-                                }
-                            }
-                        }
-                        else
-                        {
-                            if (Items[i].Quality > 0)
-                            {
-                                if (true)
-                                {
                                     Items[i].Quality -= 1;
-                                }
-                            }
-
-                            if (true)
-                            {
-                                Items[i].SellIn -= 1;
-                            }
-
-                            if (Items[i].SellIn < 0)
-                            {
-                                if (Items[i].Quality > 0)
-                                {
-                                    if (true)
-                                    {
-                                        Items[i].Quality -= 1;
-                                    }
                                 }
                             }
                         }
