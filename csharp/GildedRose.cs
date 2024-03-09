@@ -4,82 +4,101 @@ namespace csharp
 {
     public class GildedRose
     {
-        IList<Item> Items;
+        private readonly IList<Item> _items;
 
-        public GildedRose(IList<Item> Items)
+        public GildedRose(IList<Item> items)
         {
-            this.Items = Items;
+            _items = items;
         }
 
         public void UpdateQuality()
         {
-            foreach (var item in Items)
+            foreach (var item in _items)
             {
                 switch (item.Name)
                 {
                     case "Aged Brie":
                     {
-                        if (item.Quality < 50)
-                        {
-                            item.Quality += 1;
-                        }
-
-                        item.SellIn -= 1;
-
-                        if (item.SellIn < 0 && item.Quality < 50)
-                        {
-                            item.Quality += 1;
-                        }
-
+                        AgedBrieCase(item);
                         break;
                     }
                     case "Backstage passes to a TAFKAL80ETC concert":
                     {
-                        if (item.Quality < 50)
-                        {
-                            item.Quality += 1;
-
-                            if (item.SellIn < 11 && item.Quality < 50)
-                            {
-                                item.Quality += 1;
-                            }
-
-                            if (item.SellIn < 6 && item.Quality < 50)
-                            {
-                                item.Quality += 1;
-                            }
-                        }
-
-                        item.SellIn -= 1;
-
-                        if (item.SellIn < 0)
-                        {
-                            item.Quality -= item.Quality;
-                        }
-
+                        BackstagePassesToCase(item);
                         break;
                     }
                     default:
                     {
-                        if (item.Name != "Sulfuras, Hand of Ragnaros")
-                        {
-                            if (item.Quality > 0)
-                            {
-                                item.Quality -= 1;
-                            }
-
-                            item.SellIn -= 1;
-
-                            if (item.SellIn < 0 && item.Quality > 0)
-                            {
-                                item.Quality -= 1;
-                            }
-                        }
-
+                        DefaultCase(item);
                         break;
                     }
                 }
             }
+        }
+
+        private static void AgedBrieCase(Item item)
+        {
+            if (QualityLessThanFifty(item))
+            {
+                item.Quality += 1;
+            }
+
+            item.SellIn -= 1;
+
+            if (item.SellIn < 0 && QualityLessThanFifty(item))
+            {
+                item.Quality += 1;
+            }
+        }
+
+        private static void BackstagePassesToCase(Item item)
+        {
+            if (QualityLessThanFifty(item))
+            {
+                item.Quality += 1;
+
+                if (item.SellIn < 11 && QualityLessThanFifty(item))
+                {
+                    item.Quality += 1;
+                }
+
+                if (item.SellIn < 6 && QualityLessThanFifty(item))
+                {
+                    item.Quality += 1;
+                }
+            }
+
+            item.SellIn -= 1;
+
+            if (item.SellIn < 0)
+            {
+                item.Quality -= item.Quality;
+            }
+        }
+
+        private static void DefaultCase(Item item)
+        {
+            if (item.Name == "Sulfuras, Hand of Ragnaros")
+            {
+                return;
+            }
+
+            if (item.Quality > 0)
+            {
+                item.Quality -= 1;
+            }
+
+            item.SellIn -= 1;
+
+            if (item.SellIn < 0 && item.Quality > 0)
+            {
+                item.Quality -= 1;
+            }
+        }
+        
+        private static bool QualityLessThanFifty(Item item)
+        {
+            return item.Quality < 50;
         }
     }
 }
