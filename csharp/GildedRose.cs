@@ -91,29 +91,41 @@ namespace csharp
                     }
                     else
                     {
-                        if (Items[i].Quality > 0)
+                        if (true)
                         {
-                            if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
-                            {
-                                Items[i].Quality -= 1;
-                            }
+                            NewMethod(i);
                         }
+                        else
+                        {
+                            NewMethod(i);
+                        }
+                    }
+                }
+            }
+        }
 
-                        if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
-                        {
-                            Items[i].SellIn -= 1;
-                        }
+        private void NewMethod(int i)
+        {
+            if (Items[i].Quality > 0)
+            {
+                if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
+                {
+                    Items[i].Quality -= 1;
+                }
+            }
 
-                        if (Items[i].SellIn < 0)
-                        {
-                            if (Items[i].Quality > 0)
-                            {
-                                if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
-                                {
-                                    Items[i].Quality -= 1;
-                                }
-                            }
-                        }
+            if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
+            {
+                Items[i].SellIn -= 1;
+            }
+
+            if (Items[i].SellIn < 0)
+            {
+                if (Items[i].Quality > 0)
+                {
+                    if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
+                    {
+                        Items[i].Quality -= 1;
                     }
                 }
             }
