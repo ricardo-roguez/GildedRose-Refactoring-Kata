@@ -39,27 +39,18 @@ namespace csharp
                         {
                             Items[i].Quality += 1;
 
-                            if (Items[i].SellIn < 11)
+                            if (Items[i].SellIn < 11 && Items[i].Quality < 50)
                             {
-                                if (Items[i].Quality < 50)
-                                {
-                                    Items[i].Quality += 1;
-                                }
+                                Items[i].Quality += 1;
                             }
 
-                            if (Items[i].SellIn < 6)
+                            if (Items[i].SellIn < 6 && Items[i].Quality < 50)
                             {
-                                if (Items[i].Quality < 50)
-                                {
-                                    Items[i].Quality += 1;
-                                }
+                                Items[i].Quality += 1;
                             }
                         }
 
-                        if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
-                        {
-                            Items[i].SellIn -= 1;
-                        }
+                        Items[i].SellIn -= 1;
 
                         if (Items[i].SellIn < 0)
                         {
