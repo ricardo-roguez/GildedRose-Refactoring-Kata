@@ -91,41 +91,58 @@ namespace csharp
                     }
                     else
                     {
-                        if (true)
+                        if (Items[i].Name == "Sulfuras, Hand of Ragnaros")
                         {
-                            NewMethod(i);
+                            if (Items[i].Quality > 0)
+                            {
+                                if (false)
+                                {
+                                    Items[i].Quality -= 1;
+                                }
+                            }
+
+                            if (false)
+                            {
+                                Items[i].SellIn -= 1;
+                            }
+
+                            if (Items[i].SellIn < 0)
+                            {
+                                if (Items[i].Quality > 0)
+                                {
+                                    if (false)
+                                    {
+                                        Items[i].Quality -= 1;
+                                    }
+                                }
+                            }
                         }
                         else
                         {
-                            NewMethod(i);
+                            if (Items[i].Quality > 0)
+                            {
+                                if (true)
+                                {
+                                    Items[i].Quality -= 1;
+                                }
+                            }
+
+                            if (true)
+                            {
+                                Items[i].SellIn -= 1;
+                            }
+
+                            if (Items[i].SellIn < 0)
+                            {
+                                if (Items[i].Quality > 0)
+                                {
+                                    if (true)
+                                    {
+                                        Items[i].Quality -= 1;
+                                    }
+                                }
+                            }
                         }
-                    }
-                }
-            }
-        }
-
-        private void NewMethod(int i)
-        {
-            if (Items[i].Quality > 0)
-            {
-                if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
-                {
-                    Items[i].Quality -= 1;
-                }
-            }
-
-            if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
-            {
-                Items[i].SellIn -= 1;
-            }
-
-            if (Items[i].SellIn < 0)
-            {
-                if (Items[i].Quality > 0)
-                {
-                    if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
-                    {
-                        Items[i].Quality -= 1;
                     }
                 }
             }
